@@ -1,0 +1,312 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block title %}Create Project{% endblock title %}
+{% block extra_css %}
+    <!-- Plugins css -->
+    <link href="{% static 'libs/dropzone/dist/dropzone.css'%}" rel="stylesheet" type="text/css" />
+{% endblock extra_css %}
+{% block content %}
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    {% block pagetitle %}
+                    {% include "partials/page-title.html" with pagetitle="Projects" title="Create Project" %}
+                    {% endblock pagetitle %}
+
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="project-title-input">გვერდის დასახელება</label>
+                                        <input type="text" class="form-control" id="project-title-input"
+                                            placeholder="Enter project title">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="project-thumbnail-img">გვერდის ბანერი</label>
+                                        <input class="form-control" id="project-thumbnail-img" type="file" accept="image/png, image/gif, image/jpeg">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">გვერდის კონტენტი</label>
+                                        <div id="ckeditor-classic">
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                       
+                                        <div class="col-lg-4">
+                                            <div class="mb-3 mb-lg-0">
+                                                <label for="choices-status-input" class="form-label">სტატუსი</label>
+                                                <select class="form-select" data-choices data-choices-search-false
+                                                    id="choices-status-input">
+                                                    <option value="Inprogress" selected>შენახული</option>
+                                                    <option value="Completed">აქტიური</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                <!-- end card body -->
+                            </div>
+                            <!-- end card -->
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#addproduct-metadata"
+                                                role="tab">
+                                                SEO მეტა პარამეტრები
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- end card header -->
+                                <div class="card-body">
+
+                                        <div class="tab-pane" id="addproduct-metadata" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="meta-title-input">Meta სათაური</label>
+                                                        <input type="text" class="form-control" placeholder="Enter meta title" id="meta-title-input">
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="meta-keywords-input">Meta საძიებო სიტყვები</label>
+                                                        <input type="text" class="form-control" placeholder="Enter meta keywords" id="meta-keywords-input">
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                            </div>
+                                            <!-- end row -->
+
+                                            <div>
+                                                <label class="form-label" for="meta-description-input">Meta აღწერა</label>
+                                                <textarea class="form-control" id="meta-description-input" placeholder="Enter meta description" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- end tab pane -->
+                                    </div>
+                                    <!-- end tab content -->
+                                </div>
+                            <!-- end card -->
+                            <div class="text-end mb-4">
+                                <button type="submit" class="btn btn-danger w-sm">წაშლა</button>
+                                <button type="submit" class="btn btn-secondary w-sm">დრაფტი</button>
+                                <button type="submit" class="btn btn-success w-sm">შექმნა</button>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Privacy</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div>
+                                        <label for="choices-privacy-status-input" class="form-label">სტატუსი</label>
+                                        <select class="form-select" data-choices data-choices-search-false
+                                            id="choices-privacy-status-input">
+                                            <option value="Private" selected>დაბლოკილი</option>
+                                            <option value="Team">გუნდი</option>
+                                            <option value="Public">საჯარო</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- end card body -->
+                            </div>
+                            <!-- end card -->
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">გვერდის თეგები</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="choices-categories-input" class="form-label">კატეგორია</label>
+                                        <select class="form-select" data-choices data-choices-search-false
+                                            id="choices-categories-input">
+                                            <option value="Designing" selected>Designing</option>
+                                            <option value="Development">Development</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="choices-text-input" class="form-label">Skills</label>
+                                        <input class="form-control" id="choices-text-input" data-choices data-choices-limit="Required Limit" placeholder="Enter Skills" type="text"
+                                        value="UI/UX, Figma, HTML, CSS, Javascript, C#, Nodejs" />  
+                                    </div>
+                                </div>
+                                <!-- end card body -->
+                            </div>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                    
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+        {% block footer %}
+        {% include "partials/footer.html" %}
+        {% endblock footer %}
+        </div>
+        <!-- end main content-->
+{% endblock content %}
+
+{% block extra_content %}
+    <!-- Modal -->
+    <div class="modal fade" id="inviteMembersModal" tabindex="-1" aria-labelledby="inviteMembersModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header p-3 ps-4 bg-soft-success">
+                    <h5 class="modal-title" id="inviteMembersModalLabel">Members</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="search-box mb-3">
+                        <input type="text" class="form-control bg-light border-light" placeholder="Search here...">
+                        <i class="ri-search-line search-icon"></i>
+                    </div>
+
+                    <div class="mb-4 d-flex align-items-center">
+                        <div class="me-2">
+                            <h5 class="mb-0 fs-13">Members :</h5>
+                        </div>
+                        <div class="avatar-group justify-content-center">
+                            <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
+                                <div class="avatar-xs">
+                                    <img src="{% static 'images/users/avatar-3.jpg'%}" alt="" class="rounded-circle img-fluid">
+                                </div>
+                            </a>
+                            <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Sylvia Wright">
+                                <div class="avatar-xs">
+                                    <div class="avatar-title rounded-circle bg-secondary">
+                                        S
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
+                                <div class="avatar-xs">
+                                    <img src="{% static 'images/users/avatar-4.jpg'%}" alt="" class="rounded-circle img-fluid">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mx-n4 px-4" data-simplebar style="max-height: 225px;">
+                        <div class="vstack gap-3">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-xs flex-shrink-0 me-3">
+                                    <img src="{% static 'images/users/avatar-2.jpg'%}" alt="" class="img-fluid rounded-circle">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Nancy Martino</a></h5>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <button type="button" class="btn btn-light btn-sm">Add</button>
+                                </div>
+                            </div>
+                            <!-- end member item -->
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-xs flex-shrink-0 me-3">
+                                    <div class="avatar-title bg-soft-danger text-danger rounded-circle">
+                                        HB
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Henry Baird</a></h5>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <button type="button" class="btn btn-light btn-sm">Add</button>
+                                </div>
+                            </div>
+                            <!-- end member item -->
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-xs flex-shrink-0 me-3">
+                                    <img src="{% static 'images/users/avatar-3.jpg'%}" alt="" class="img-fluid rounded-circle">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Frank Hook</a></h5>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <button type="button" class="btn btn-light btn-sm">Add</button>
+                                </div>
+                            </div>
+                            <!-- end member item -->
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-xs flex-shrink-0 me-3">
+                                    <img src="{% static 'images/users/avatar-4.jpg'%}" alt="" class="img-fluid rounded-circle">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Jennifer Carter</a></h5>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <button type="button" class="btn btn-light btn-sm">Add</button>
+                                </div>
+                            </div>
+                            <!-- end member item -->
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-xs flex-shrink-0 me-3">
+                                    <div class="avatar-title bg-soft-success text-success rounded-circle">
+                                        AC
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Alexis Clarke</a></h5>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <button type="button" class="btn btn-light btn-sm">Add</button>
+                                </div>
+                            </div>
+                            <!-- end member item -->
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-xs flex-shrink-0 me-3">
+                                    <img src="{% static 'images/users/avatar-7.jpg'%}" alt="" class="img-fluid rounded-circle">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Joseph Parker</a></h5>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <button type="button" class="btn btn-light btn-sm">Add</button>
+                                </div>
+                            </div>
+                            <!-- end member item -->
+                        </div>
+                        <!-- end list -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light w-xs" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success w-xs">Invite</button>
+                </div>
+            </div>
+            <!-- end modal-content -->
+        </div>
+        <!-- modal-dialog -->
+    </div>
+    <!-- end modal -->
+{% endblock extra_content %}
+{% block extra_js %}
+    <!-- ckeditor -->
+    <script src="{% static 'libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js'%}"></script>
+
+    <!-- dropzone js -->
+    <script src="{% static 'libs/dropzone/dist/dropzone-min.js'%}"></script>
+    <!-- project-create init -->
+    <script src="{% static 'js/pages/project-create.init.js'%}"></script>
+{% endblock extra_js %}

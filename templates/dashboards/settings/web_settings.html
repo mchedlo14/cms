@@ -1,0 +1,164 @@
+
+
+
+{% extends "partials/base.html" %}
+{% load static %}
+{% block title %}Create Project{% endblock title %}
+{% block extra_css %}
+    <!-- Plugins css -->
+    <link href="{% static 'libs/dropzone/dropzone.css'%}" rel="stylesheet" type="text/css" />
+{% endblock extra_css %}
+{% block content %}
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    {% block pagetitle %}
+                    {% include "partials/page-title.html" with pagetitle="Projects" title="ძირითდი პარამეტრები" %}
+                    {% endblock pagetitle %}
+
+                  
+                        <div class="row">
+                            <div class="col-xxl-6">
+                                <div class="card">
+                                    <div class="card-header align-items-center d-flex">
+                                        <h4 class="card-title mb-0 flex-grow-1">ძირითდი პარამეტრები</h4>
+                                    </div><!-- end card header -->
+    
+                                    <div class="card-body">
+                                       
+                                        <form class="needs-validation" method="post">
+                                            {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">საიტის დასახელება</label>
+                                                            {{ settings_form.web_name }}
+                                                   
+                                                        </div>
+                                                    </div><!--end col-->
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="formFile" class="form-label">საიტის ლოგო</label>
+                                                            {{ settings_form.web_logo }}
+                                                        </div>
+                                                    </div><!--end col-->
+                                                    <div class="col-md-6">
+                                                        
+                                                            <div class="col-lg-12">
+                                                                <label for="meassageInput" class="form-label">აღწერა</label>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                {{ settings_form.web_description }}
+                                                            </div>
+                                                      
+                                                    </div><!--end col-->
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="phonenumberInput" class="form-label">ტელეფონი</label>
+                                                            {{ settings_form.web_number}}
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="emailidInput" class="form-label">ელ.ფოსტა</label>
+                                                            {{ settings_form.web_email }}
+                                                        </div>
+                                                    </div><!--end col-->
+                                                  
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="address1ControlTextarea" class="form-label">ქალაქი</label>
+                                                            {{ settings_form.web_info_adress_city }}
+                                                        </div>
+                                                    </div><!--end col-->
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="ForminputState" class="form-label">ვალუტა</label>
+                                                            {{ settings_form.web_currency }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <label for="address1ControlTextarea" class="form-label">მისამართი</label>
+                                                            {{ settings_form.web_info_adress }}
+                                                        </div>
+                                                    </div>
+                                                    <!--end col-->
+                                                    <div class="col-lg-12">
+                                                        <div class="text-end">
+                                                            <button class="btn btn-primary" type="submit">Submit form</button>
+                                                        </div>
+                                                    </div><!--end col-->
+                                                </div><!--end row-->
+                                            </form>
+                                       
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+    
+                            <div class="col-xxl-6">
+                                <div class="card">
+                                    <div class="card-header align-items-center d-flex">
+                                        <h4 class="card-title mb-0 flex-grow-1">SEO პარამეტრები</h4>
+                                    </div><!-- end card header -->
+    
+                                    <div class="card-body">
+                                            <form action="javascript:void(0);" class="row g-3">
+                                                <div class="col-md-12">
+                                                    <label for="fullnameInput" class="form-label">საიტის აღწერა</label>
+                                                    <input type="text" class="form-control" id="fullnameInput" placeholder="Enter your name">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="fullnameInput" class="form-label">ტიპი</label>
+                                                    <input type="text" class="form-control" id="fullnameInput" placeholder="ვებ-გვერდი">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="inputAddress" class="form-label">საძიებო სიტყვები</label>
+                                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="inputAddress2" class="form-label">სურათი SEO</label>
+                                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                            <label for="formFile" class="form-label">გაზიარების სურათი</label>
+                                                            <input class="form-control" type="file" id="formFile">
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-12">
+                                                    <div class="text-end">
+                                                        <button type="submit" class="btn btn-primary">შენახვა</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div>     
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+        {% block footer %}
+        {% include "partials/footer.html" %}
+        {% endblock footer %}
+        </div>
+        <!-- end main content-->
+{% endblock content %}
+
+
+{% block extra_js %}
+    <!-- ckeditor -->
+    <script src="{% static 'libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js'%}"></script>
+
+    <!-- dropzone js -->
+    <script src="{% static 'libs/dropzone/dropzone-min.js'%}"></script>
+    <!-- project-create init -->
+    <script src="{% static 'js/pages/project-create.init.js'%}"></script>
+{% endblock extra_js %}

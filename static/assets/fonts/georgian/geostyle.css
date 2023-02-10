@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'GA Cursor';
+    src: url('GACursor-Regular.woff2') format('woff2'),
+        url('GACursor-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TBC Din Mtavruli';
+    src: url('TBCDinMtavruli.woff2') format('woff2'),
+        url('TBCDinMtavruli.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

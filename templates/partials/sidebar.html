@@ -1,0 +1,257 @@
+{% load static %}
+{% block sidebar %}
+    <!-- ========== App Menu ========== -->
+    <div class="app-menu navbar-menu">
+        <!-- LOGO -->
+        <div class="navbar-brand-box">
+            <!-- Dark Logo-->
+            <a href="{% url 'dashboards:dashboard' %}" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{% static 'images/logo-sm.png' %}" alt="" height="22">
+                    </span>
+                <span class="logo-lg">
+                        <img src="{% static 'images/logo-dark.png' %}" alt="" height="17">
+                    </span>
+            </a>
+            <!-- Light Logo-->
+            <a href="{% url 'dashboards:dashboard' %}" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{% static 'images/logo-sm.png' %}" alt="" height="22">
+                    </span>
+                <span class="logo-lg">
+                        <img src="{% static 'images/logo-light.png' %}" alt="" height="17">
+                    </span>
+            </a>
+            <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+                    id="vertical-hover">
+                <i class="ri-record-circle-line"></i>
+            </button>
+        </div>
+
+        <div id="scrollbar">
+            <div class="container-fluid">
+
+                <div id="two-column-menu">
+                </div>
+                <ul class="navbar-nav" id="navbar-nav">
+                    <li class="menu-title"><span data-key="t-menu">მთავარი</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'dashboards:dashboard' %}" aria-expanded="false">
+                            <i class="mdi mdi-monitor-dashboard"></i> დეშბორდი
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'analytic-list' %}" aria-expanded="false">
+                            <i class="las la-chart-pie"></i> ანალიტიკა
+                        </a>
+                    </li>
+                    <!-- end Dashboard Menu -->
+                    <li class="menu-title"><span data-key="t-menu">კონტენტი</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarMenu" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="sidebarMenu">
+                            <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">მენიუ</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarMenu">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{% url 'menu-list' %}" class="nav-link" data-key="t-dashboards">ყველა
+                                        მენიუ</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="collapse menu-dropdown" id="sidebarMenu">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{% url 'menu-create' %}" class="nav-link" data-key="t-dashboards">მენიუს
+                                        დამატება</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- end Dashboard Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarPage" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="sidebarPage">
+                            <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">გვერდების მართვა</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarPage">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{% url 'dashboards:all_page' %}" class="nav-link" data-key="t-analytics">
+                                        ყველა გვერდი </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="collapse menu-dropdown" id="sidebarPage">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{% url 'dashboards:page_managment' %}" class="nav-link"
+                                       data-key="t-analytics"> გვერდის დამატება </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarService" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="sidebarService">
+                            <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">სერვისები</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarService">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{% url 'service-list' %}" class="nav-link" data-key="t-analytics">ყველა
+                                        სერვისი</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{% url 'service-create' %}" class="nav-link" data-key="t-analytics">სერვისის
+                                        დამატება</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{% url 'service-category-list' %}" class="nav-link"
+                                       data-key="t-analytics">სერვისის კატეგორიები</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'service-category-create' %}" class="nav-link"
+                                       data-key="t-analytics">კატეგორიის დამატება</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarProduct" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="sidebarProduct">
+                            <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">პროდუქტები</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarProduct">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{% url 'product-list' %}" class="nav-link" data-key="t-analytics">ყველა
+                                        პროდუქტი</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{% url 'product-create' %}" class="nav-link" data-key="t-analytics">პროდუქტის
+                                        დამატება</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'product-category-list' %}" class="nav-link" data-key="t-analytics">ყველა
+                                        კატეგორია</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'product-category-create' %}" class="nav-link"
+                                       data-key="t-analytics">კატეგორიის დამატება</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarCategories" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="sidebarCategories">
+                            <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">კატეგორიები</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarCategories">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{% url 'dashboards:all_page' %}" class="nav-link" data-key="t-analytics">გვერდები</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="menu-title"><span data-key="t-menu">მომხმარებლები</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#Users" data-bs-toggle="collapse"
+                           role="button" aria-expanded="false" aria-controls="Users">
+                            <i class="bx bx-smile"></i> <span data-key="t-apps">მომხმარებლები</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="Users">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{% url 'users:users' %}" class="nav-link" data-key="t-calendar">
+                                        მომხმარებლები </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'users:subscribers' %}" class="nav-link" data-key="t-chat">
+                                        გამომწერები </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-title"><span data-key="j-menu">ჯგუფები</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#groups" data-bs-toggle="collapse"
+                           role="button" aria-expanded="false" aria-controls="Users">
+                            <i class="bx bx-smile"></i> <span data-key="t-apps">ჯგუფები</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="groups">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{% url 'group-list' %}" class="nav-link" data-key="t-calendar">
+                                        ყველა ჯგუფი </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'group-create' %}" class="nav-link" data-key="t-chat">
+                                        ჯგუფის დამატება </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{% url 'permission-list' %}" class="nav-link" data-key="t-chat">
+                                        ყველა უფლება </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{% url 'permission-create' %}" class="nav-link" data-key="t-chat">
+                                        უფლების დამატება </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">კონფიგურაცია</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#settings" data-bs-toggle="collapse"
+                           role="button" aria-expanded="false" aria-controls="settings">
+                            <i class="bx bx-mouse-alt"></i> <span data-key="t-apps">პარამეტრები</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="settings">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{% url 'settings:web_settings' %}" class="nav-link" data-key="t-calendar">საიტის
+                                        პარამეტრები</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'apps:chat' %}" class="nav-link" data-key="t-chat"> SEO
+                                        პარამეტრები </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'apps:chat' %}" class="nav-link" data-key="t-chat"> Email
+                                        პარამეტრები </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'apps:chat' %}" class="nav-link" data-key="t-chat"> SEO
+                                        პარამეტრები </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="nav-link menu-link" href="{% url 'settings:api' %}" aria-expanded="false">
+                            <i class="mdi mdi-api"></i> <span data-key="t-widgets">API კონფიგურაცია <span
+                                class="badge badge-gradient-dark">მალე</span></span>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+            <!-- Sidebar -->
+        </div>
+        <div class="sidebar-background"></div>
+    </div>
+    <!-- Left Sidebar End -->
+    <!-- Vertical Overlay-->
+    <div class="vertical-overlay"></div>
+{% endblock sidebar %}
+    

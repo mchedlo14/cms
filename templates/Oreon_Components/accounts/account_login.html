@@ -1,0 +1,64 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block title %}Sign In{% endblock title %}
+    
+{% block content %}
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card mt-4">
+                        
+                            <div class="card-body p-4"> 
+                                <div class="text-center mt-2">
+                                    <h5 class="text-primary">აუტორიზაცია</h5>
+                                </div>
+                                <div class="p-2 mt-4">
+                                    <form class="needs-validation" method="POST">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            {{ form.email }}
+                                            
+                                        </div>
+
+                                        <div class="mb-3">
+                                            {{ form.password }}
+                                            
+                                        </div>
+
+                                        <div class="mb-3 position-relative">
+                                            <div class="float-end">
+                                                <a class="text-muted">დაგავიწყდათ პაროლი?</a>
+                                            </div>
+                                            
+                                            <button class="btn btn-link position-absolute mt-4 end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                        </div>
+
+                                        
+                                        <div class="mt-4">
+                                            <button class="btn btn-info w-100" type="submit">შესვლა</button>
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                            <!-- end card body -->
+                        </div>
+                        <!-- end card -->
+
+                        <div class="mt-4 text-center">
+                            <p class="mb-0">არ გაქვს ანგარიში? <a href="{% url 'account:registration' %}" class="fw-semibold text-primary text-decoration-underline"> შექმნა </a> </p>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end row -->
+{% endblock content %}
+
+{% block extra_js %}
+        <!-- password-addon init -->
+        <script src="{% static 'js/pages/password-addon.init.js'%}"></script>
+{% endblock extra_js %}
+    

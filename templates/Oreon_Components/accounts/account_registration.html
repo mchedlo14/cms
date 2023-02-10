@@ -1,0 +1,67 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+            <div class="card mt-4">
+
+                <div class="card-body p-4">
+                    <div class="text-center mt-2">
+                        <h5 class="text-primary">ექაუნთის შექმნა</h5>
+                    </div>
+                    <div class="p-2 mt-4">
+                        <form class="needs-validation" novalidate method="post">
+
+
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                {{ form.email }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form.first_name }}
+
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.last_name }}
+
+                            </div>
+
+                            <div class="mb-2">
+                                {{ form.password }}
+
+                            </div>
+                            <div class="mb-2">
+                                {{ form.password_confirm }}
+
+                            </div>
+
+
+                            <div class="mt-4">
+                                <button class="btn btn-info w-100" type="submit">რეგისტრაცია</button>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+                <!-- end card body -->
+            </div>
+            <!-- end card -->
+
+            <div class="mt-4 text-center">
+                <p class="mb-0">გაქვს ანგარიში? <a href="{% url 'account:login' %}"
+                                                   class="fw-semibold text-primary text-decoration-underline">
+                    შესვლა </a></p>
+            </div>
+
+        </div>
+    </div>
+    <!-- end row -->
+{% endblock content %}

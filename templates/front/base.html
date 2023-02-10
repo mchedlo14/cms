@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ასტრონავტი</title>
+    <meta name="description" content="">
+    <link href="{% static '/assets/img/favicon.ico' %}" rel="shortcut icon">
+    <!-- Fonts -->
+    <link href="{% static '/assets/fonts/cloudicon/cloudicon.css' %}" rel="stylesheet" onload="if(media!='all')media='all'">
+    <link href="{% static '/assets/fonts/fontawesome/css/all.min.css' %}" rel="stylesheet" onload="if(media!='all')media='all'">
+    <link href="{% static '/assets/fonts/evafeat/evafeat.css' %}" rel="stylesheet" onload="if(media!='all')media='all'">
+    <!-- RTL STYLES-->
+    <link href="{% static '/assets/css/rtl/bootstrap-rtl.min.css' %}" disabled="true" rel="stylesheet" class="rtl">
+    <link href="{% static '/assets/css/rtl/style-rtl.min.css' %}" disabled="true" rel="stylesheet" class="rtl">
+    <!-- CSS Styles -->
+    <link href="{% static '/assets/css/bootstrap.min.css' %}" rel="stylesheet" class="ltr" onload="if(media!='all')media='all'">
+    <link href="{% static '/assets/css/flickity.min.css' %}" rel="stylesheet" onload="if(media!='all')media='all'">
+    <link href="{% static '/assets/css/aos.min.css' %}" rel="stylesheet" onload="if(media!='all')media='all'">
+    <link href="{% static '/assets/css/swiper.min.css' %}" rel="stylesheet" onload="if(media!='all')media='all'">
+    <link href="{% static '/assets/css/animate.min.css' %}" rel="stylesheet" onload="if(media!='all')media='all'">
+    <link href="{% static '/assets/css/style.min.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/fonts/georgian/geostyle.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/css/custom.css' %}" rel="stylesheet">
+  </head>
+
+  <body >
+  <div class="box-container limit-width">
+    <!-- ***** პარამეტრები ****** -->
+    {% include 'front/settings.html' %}
+    <!-- ***** სპინერის კოდი ****** -->
+    <div id="spinner-area">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+        <div class="spinner-txt">Astronaut / ასტროანვტი...</div>
+      </div>
+    </div>
+    <!-- ***** FRAME MODE ****** -->
+    <div class="body-borders" data-border="20">
+      <div class="top-border bg-white"></div>
+      <div class="right-border bg-white"></div>
+      <div class="bottom-border bg-white"></div>
+      <div class="left-border bg-white"></div>
+    </div>
+    <!-- ***** UPLOADED MENU FROM HEADER.HTML ***** -->
+    {% include 'front/header.html' %}
+    
+    <!-- ***** აქ იტვირთება კონტენტი **** -->
+    {% block home_page %} {% endblock %}
+    {% block service %} {% endblock %}
+   <!-- ***** აქ იტვირთება კონტენტი **** -->
+
+
+    <!-- ***** UPLOADED FOOTER FROM FOOTER.HTML ***** -->
+    {% include 'front/footer.html' %}
+  
+  </div>
+<!-- ***** BUTTON GO TOP ***** -->
+<a href="#0" class="cd-top"> <i class="fas fa-angle-up"></i> </a>
+<!-- Javascript -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/typed.js' %}"></script>
+<script defer src="{% static 'assets/js/popper.min.js' %}"></script>
+<script defer src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script defer src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+<script defer src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+<script defer src="{% static 'assets/js/slick.min.js' %}"></script>
+<script defer src="{% static 'assets/js/flickity.pkgd.min.js' %}"></script>
+<script defer src="{% static 'assets/js/flickity-fade.min.js' %}"></script>
+<script defer src="{% static 'assets/js/aos.min.js' %}"></script>
+<script defer src="{% static 'assets/js/isotope.min.js' %}"></script>
+<script defer src="{% static 'assets/js/jquery.scrollme.min.js' %}"></script>
+<script defer src="{% static 'assets/js/swiper.min.js' %}"></script>
+<script async src="{% static 'assets/js/lazysizes.min.js' %}"></script>
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script>new WOW().init();</script>
+<script defer src="{% static 'assets/js/scripts.min.js' %}"></script>
+<script defer src="{% static 'assets/js/settings-init.js' %}"></script>
+<script>
+var typed1 = new Typed('#typed1', {
+  strings: ['performance', "flexibility", "scalability."],
+  typeSpeed: 50,
+  backSpeed: 20,
+  smartBackspace: true,
+  loop: true
+});
+</script>
+</body>
+</html>

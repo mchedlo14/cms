@@ -1,0 +1,97 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block title %}Sitemap{% endblock title %}
+{% block content %}
+    {% load mptt_tags %}
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                {% block pagetitle %}
+                    {% include "partials/page-title.html" with pagetitle="კატეგორიები" title="კატეგორიები" %}
+                {% endblock pagetitle %}
+
+
+                <ul class="children">
+                    {{ children }}
+                </ul>
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <div class="verti-sitemap">
+                                            <ul class="list-unstyled mb-0">
+                                                <div class="first-list">
+
+
+                                                    <div class="list-wrap">
+                                                        {% recursetree categories %}
+                                                            <a href="#" class="fw-semibold text-primary"><i
+                                                                    class=""></i>
+                                                                {{ node.name }}
+                                                            </a>
+                                                            </div>
+                                                            {% if not node.is_leaf_node %}
+                                                                <ul class="second-list list-unstyled">
+                                                                <li><a href="">{{ children }}</a></li>
+                                                            {% endif %}
+                                                        </ul>
+                                                        {% endrecursetree %}
+
+                                                </div>
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!--end row-->
+                            </div>
+                            <!--end card-body-->
+                        </div>
+                        <!--end card-->
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        {% block footer %}
+            {% include "partials/footer.html" %}
+        {% endblock footer %}
+    </div>
+    <!-- end main content-->
+{% endblock content %}
+
+
+<!-- {% load mptt_tags %}
+<ul>
+    {% recursetree categories %}
+        <li>{{ node.name }}
+            <a href="{% url 'product-category-edit' slug=node.slug %}">edit</a>
+            <a href="{% url 'product-category-delete' slug=node.slug %}">delete</a>
+
+            {% if not node.is_leaf_node %}
+
+                <ul>
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+
+    {% endrecursetree %}
+</ul> -->

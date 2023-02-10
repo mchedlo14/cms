@@ -1,0 +1,296 @@
+{% extends "partials/base.html" %}
+{% load mptt_tags %}
+{% load static %}
+{% block title %}Products{% endblock title %}
+{% block extra_css %}
+
+    <link rel="stylesheet" href="{% static 'libs/nouislider/nouislider.min.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'libs/gridjs/theme/mermaid.min.css' %}">
+{% endblock extra_css %}
+{% block content %}
+
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                {% block pagetitle %}
+                    {% include "partials/page-title.html" with pagetitle="პროდუქტები" title="პროდუქტები" %}
+                {% endblock pagetitle %}
+
+                <div class="row">
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex mb-3">
+                                    <div class="flex-grow-1">
+                                        <h5 class="fs-16">გაფილტვრა</h5>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <a href="#" class="text-decoration-underline" id="clearall">ყველას წაშლა</a>
+                                    </div>
+                                </div>
+
+                                <div class="filter-choices-input">
+                                    <input class="form-control" data-choices data-choices-removeItem type="text"
+                                           id="filter-choices-input"
+                                           value="T-Shirts"/>
+                                </div>
+                            </div>
+
+                            <div class="accordion accordion-flush filter-accordion">
+
+                                <div class="card-body border-bottom">
+                                    <div>
+                                        <p class="text-muted text-uppercase fs-12 fw-medium mb-2">კატეგორიები</p>
+                                        <ul class="list-unstyled mb-0 filter-list">
+                                            <ul class="root">
+                                                {% recursetree categories %}
+                                                    <li>
+                                                        <a href="#" class="d-flex py-1 align-items-center">
+                                                            <div class="flex-grow-1">
+                                                                <h5 class="fs-13 mb-0 listname">{{ node.name }}</h5>
+                                                            </div>
+                                                        </a>
+                                                        {% if not node.is_leaf_node %}
+                                                            <ul class="children">
+                                                                {{ children }}
+                                                            </ul>
+                                                        {% endif %}
+                                                    </li>
+                                                {% endrecursetree %}
+                                            </ul>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="accordion-item">
+
+
+                                    <div id="flush-collapseBrands" class="accordion-collapse collapse show"
+                                         aria-labelledby="flush-headingBrands">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+  
+                    </div>
+     
+
+                    <div class="col-xl-9 col-lg-8">
+                        <div>
+                            <div class="card">
+                                <div class="card-header border-0">
+                                    <div class="row g-4">
+                                        <div class="col-sm-auto">
+                                            <div>
+                                                <a href="{% url 'product-create' %}" class="btn btn-info"
+                                                   id="addproduct-btn"><i
+                                                        class="ri-add-line align-bottom me-1"></i> Add Product</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm">
+                                            <div class="d-flex justify-content-sm-end">
+                                                <div class="search-box ms-2">
+                                                    <input type="text" class="form-control" id="searchProductList"
+                                                           placeholder="Search Products...">
+                                                    <i class="ri-search-line search-icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0"
+                                                role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-body active fw-semibold"
+                                                       data-bs-toggle="tab" href="#productnav-all"
+                                                       role="tab">
+                                                        ყველა <span
+                                                            class="badge badge-soft-danger align-middle rounded-pill ms-1">{{ count }}</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-body fw-semibold" data-bs-toggle="tab"
+                                                       href="#productnav-published"
+                                                       role="tab">
+                                                        გამოქვეყნებული <span
+                                                            class="badge badge-soft-danger align-middle rounded-pill ms-1"></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div id="selection-element">
+                                                <div class="my-n1 d-flex align-items-center text-muted">
+                                                    Select
+                                                    <div id="select-content" class="text-body fw-semibold px-1"></div>
+                                                    Result
+                                                    <button type="button" class="btn btn-link link-danger p-0 ms-3"
+                                                            data-bs-toggle="modal" data-bs-target="#removeItemModal">
+                                                        Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                 
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <table id="example"
+                                                           class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                                           style="width:100%">
+                                                        <thead>
+                                                        <tr>
+
+                                                            <th>ID</th>
+                                                            <th>სახელი</th>
+                                                            <th>სლაგი</th>
+                                                            <th>აღწერა</th>
+                                                            <th>რედაქტირება</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            {% for product in products %}
+
+                                                                <td>{{ product.id }}</td>
+                                                                <td>{{ product.product_name }}</td>
+                                                                <td>{{ product.slug|truncatechars:20 }}</td>
+                                                                <td>{{ product.product_description|truncatechars:8 }}</td>
+                                                                <td>
+                                                                    <div class="dropdown d-inline-block">
+                                                                        <button class="btn btn-soft-secondary btn-sm dropdown"
+                                                                                type="button"
+                                                                                data-bs-toggle="dropdown"
+                                                                                aria-expanded="false">
+                                                                            <i class="ri-more-fill align-middle"></i>
+                                                                        </button>
+                                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                                            <li>
+                                                                                <a href="{% url 'product-edit' slug=product.slug %}"
+                                                                                   class="dropdown-item edit-item-btn"><i
+                                                                                        class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                                                                    რედაქტირება</a></li>
+                                                                            <li>
+                                                                                <a href="{% url 'product-delete' slug=product.slug %}"
+                                                                                   class="dropdown-item remove-item-btn">
+                                                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                                    წაშლა
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                                </tr>
+                                                            {% endfor %}
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-content text-muted">
+                                        <div class="tab-pane active" id="productnav-all" role="tabpanel">
+                                            <div id="table-product-list-all"
+                                                 class="table-card gridjs-border-none"></div>
+                                        </div>
+                         
+
+                                        <div class="tab-pane" id="productnav-published" role="tabpanel">
+                                            <div id="table-product-list-published"
+                                                 class="table-card gridjs-border-none"></div>
+                                        </div>
+                                  
+
+                                        <div class="tab-pane" id="productnav-draft" role="tabpanel">
+                                            <div class="py-4 text-center">
+                                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json"
+                                                           trigger="loop" colors="primary:#405189,secondary:#0ab39c"
+                                                           style="width:72px;height:72px">
+                                                </lord-icon>
+                                                <h5 class="mt-4">Sorry! No Result Found</h5>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                
+
+                                </div>
+                          
+                            </div>
+                           
+                        </div>
+                    </div>
+                  
+                </div>
+          
+
+            </div>
+            
+        </div>
+        
+
+        {% block footer %}
+            {% include "partials/footer.html" %}
+        {% endblock footer %}
+    </div>
+
+{% endblock content %}
+
+{% block extra_content %}
+
+    <div id="removeItemModal" class="modal fade zoomIn" tabindex="-1"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mt-2 text-center">
+                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                                   colors="primary:#f7b84b,secondary:#f06548"
+                                   style="width:100px;height:100px"></lord-icon>
+                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                            <h4>Are you Sure ?</h4>
+                            <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this Product ?</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn w-sm btn-danger " id="delete-product">Yes, Delete It!</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock extra_content %}
+
+{% block extra_js %}
+
+    <script src="{% static 'libs/nouislider/nouislider.min.js' %}"></script>
+    <script src="{% static 'libs/wnumb/wNumb.min.js' %}"></script>
+
+
+    <script src="{% static 'libs/gridjs/gridjs.umd.js' %}"></script>
+    <script src="https://unpkg.com/gridjs/plugins/selection/selection.umd.js"></script>
+
+{% endblock extra_js %}
+
+

@@ -1,0 +1,137 @@
+
+{% extends "partials/base.html" %}
+{% load static %}
+{% block title %}Sitemap{% endblock title %}
+{% block content %}
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    {% block pagetitle %}
+                    {% include "partials/page-title.html" with pagetitle="კატეგორიები" title="კატეგორიები" %}
+                    {% endblock pagetitle %}
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <div class="col-sm-6">
+                                            <div class="verti-sitemap">
+                                                <ul class="list-unstyled mb-0">
+                                                        <div class="first-list">
+                                                            <div class="list-wrap">
+                                                                <a href="javascript: void(0);"
+                                                                    class="fw-semibold text-primary"><i
+                                                                        class="ri-airplay-line me-1 align-bottom"></i>
+                                                                    Dashboards</a>
+                                                            </div>
+                                                            <ul class="second-list list-unstyled">
+                                                                <li>
+                                                                    <a href="javascript: void(0);">Analytics</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript: void(0);">CRM</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="first-list">
+                                                            <div class="list-wrap">
+                                                                <a href="javascript: void(0);"
+                                                                    class="fw-semibold text-primary"><i
+                                                                        class="ri-pencil-ruler-2-line me-1 align-bottom"></i>
+                                                                    App Pages</a>
+                                                            </div>
+                                                            <ul class="second-list list-unstyled">
+                                                                <li><a href="javascript: void(0);">Calender</a></li>
+                                                                <li><a href="javascript: void(0);">Chat</a></li>
+                                                                <li><a href="javascript: void(0);">Email</a></li>
+                                                                <li><a href="javascript: void(0);">Ecommerce</a>
+                                                                </li>
+                                                                <li><a href="javascript: void(0);">Projects</a></li>
+                                                                <li><a href="javascript: void(0);">Tasks</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="first-list">
+                                                            <div class="list-wrap">
+                                                                <a href="javascript: void(0);"
+                                                                    class="fw-semibold text-primary"><i
+                                                                        class="ri-file-list-3-line me-1 align-bottom"></i>
+                                                                    Pages</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="first-list">
+                                                            <div class="list-wrap">
+                                                                <a href="javascript: void(0);"
+                                                                    class="fw-semibold text-primary"><i
+                                                                        class="ri-stack-line me-1 align-bottom"></i>
+                                                                    Components</a>
+                                                            </div>
+                                                            <ul class="second-list list-unstyled">
+                                                                <li>
+                                                                    <a href="javascript: void(0);">Base UI</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript: void(0);">Advance UI</a>
+                                                                    <ul class="third-list list-unstyled">
+                                                                        <li><a href="javascript: void(0);">Sweet
+                                                                                Alerts</a></li>
+                                                                        <li><a href="javascript: void(0);">Range
+                                                                                Slider</a></li>
+                                                                        <li><a href="javascript: void(0);">Nestable
+                                                                                List</a></li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end row-->
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+        {% block footer %}
+        {% include "partials/footer.html" %}
+        {% endblock footer %}
+        </div>
+        <!-- end main content-->
+{% endblock content %}
+
+
+<!-- {% load mptt_tags %}
+<ul>
+    {% recursetree categories %}
+        <li>{{ node.name }}
+            <a href="{% url 'service-category-edit' slug=node.slug %}">edit</a>
+            <a href="{% url 'service-category-delete' slug=node.slug %}">delete</a>
+
+            {% if not node.is_leaf_node %}
+
+                <ul>
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+
+    {% endrecursetree %}
+</ul> -->
